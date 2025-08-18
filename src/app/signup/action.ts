@@ -34,10 +34,9 @@ export async function signup(formData: FormData) {
 
   console.log({ email, password, image, user: data.user });
 
- 
   if (data.user?.confirmation_sent_at) {
     // Email confirmation required
-    redirect("/confirm"); // redirect to a page telling user to check email
+    return redirect("/confirm"); // redirect to a page telling user to check email
   }
 
   // --------------------------
@@ -45,5 +44,5 @@ export async function signup(formData: FormData) {
   // --------------------------
   // Supabase sets session cookies automatically
   revalidatePath("/", "layout"); // update any user-dependent layout
-  redirect("/account"); // redirect to private account/dashboard page
+  return redirect("/account"); // redirect to private account/dashboard page
 }
