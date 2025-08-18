@@ -12,7 +12,10 @@ const rubik = Rubik({
 });
 
 export const metadata: Metadata = {
-  title: "Next + Supabase",
+  title: {
+    default: "Next | Supabase",
+    template: "%s | Next-Supabase",
+  },
   description: "A Next.js app with Supabase integration",
 };
 
