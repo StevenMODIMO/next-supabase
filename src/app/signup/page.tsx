@@ -1,10 +1,14 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
+import SignupForm from "@/components/Signup";
 
 export const metadata: Metadata = {
-    title: "Get started",
-}
-
+  title: "Get started",
+};
 
 export default function Signup() {
-  return <div>Signup</div>;
+  return (
+    <div>
+      <SignupForm />
+    </div>
+  );
 }

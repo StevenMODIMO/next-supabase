@@ -1,18 +1,14 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
+import { updateSession } from "@/utils/supabase/middleware";
 
-export function middleware(req: NextRequest) {
-  const path = req.nextUrl.pathname;
-
-  // Protect /account routes
-  if (path.startsWith("/account")) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
-
-  // Otherwise, continue normally
-  return NextResponse.next();
+export async function middleware(request: NextRequest) {
+  return await updateSession(request);
 }
 
 export const config = {
-  matcher: ["/", "/account", "/login", "/signup"],
+  matcher: [
+    "/account/:path*",
+    "/dashboard/:path*",
+    "/settings/:path*", // add more private areas here
+  ],
 };

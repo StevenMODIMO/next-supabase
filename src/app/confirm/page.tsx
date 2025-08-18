@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import LoginForm from "@/components/Login";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/utils/supabase/client";
+import Confirm from "@/components/Confirm";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Email confirmation",
 };
 
-export default async function Login() {
+export default async function ConfirmPage() {
   const supabase = await createClient();
   const {
     data: { user },
@@ -16,10 +16,9 @@ export default async function Login() {
   if (user) {
     redirect("/account");
   }
-
   return (
-    <div>
-      <LoginForm />
+    <div className="h-[90%] flex items-center justify-center px-4">
+      <Confirm />
     </div>
   );
 }

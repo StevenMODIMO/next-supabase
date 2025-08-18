@@ -27,6 +27,12 @@ export default function Navbar() {
           </Link>
           <Link
             className="p-2 rounded hover:bg-gray-100 transition-all duration-150 ease-in-out"
+            href="/settings"
+          >
+            Settings
+          </Link>
+          <Link
+            className="p-2 rounded hover:bg-gray-100 transition-all duration-150 ease-in-out"
             href="/signup"
           >
             Signup
