@@ -1,11 +1,23 @@
 "use client";
+import { useEffect } from "react";
 import { Moon, Sun, PanelRightClose } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/client";
 
 export default function Navbar() {
+  const supabase = createClient();
   const { setTheme } = useTheme();
+  useEffect(() => {
+    const getUserProfile = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      console.log(user);
+    };
+    getUserProfile();
+  }, []);
   return (
     <div className="p-2 font-medium text-sm">
       <nav className="flex items-center justify-between">
